@@ -1,0 +1,16 @@
+{
+  "name": "bitset",
+  "version": "0.0.1",
+  "main": "./main.js",
+  "types": "./main.d.ts",
+  "author": "NaughtySora <naughtysora@proton.me>",
+  "keywords": [
+    "nodejs",
+    "bitset"
+  ],
+  "scripts": {},
+  "devDependencies": {
+    "@types/node": "^25.9.7",
+    "typescript": "^6.0.3"
+  }
+}
