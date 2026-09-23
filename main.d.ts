@@ -9,4 +9,5 @@ export class SparseBitSet {
   get(value: number): Boolean;
   set(value: number): void;
   unset(value: number): Boolean;
+  nextSet(value: number): number;
 }
