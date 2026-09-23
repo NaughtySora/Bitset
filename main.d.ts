@@ -1,13 +1,17 @@
-export class BitSet {
-  constructor(maxByteLength: number, allocate?: number);
+declare class Iface {
   get(value: number): Boolean;
   set(value: number): void;
   unset(value: number): Boolean;
 }
 
-export class SparseBitSet {
+export declare class BitSet extends Iface {
+  constructor(maxByteLength: number, allocate?: number);
+}
+
+export declare class SparseBitSet extends Iface {
   get(value: number): Boolean;
-  set(value: number): void;
-  unset(value: number): Boolean;
-  nextSet(value: number): number;
+}
+
+export declare class BitSetN extends Iface {
+  constructor(value?: number);
 }
