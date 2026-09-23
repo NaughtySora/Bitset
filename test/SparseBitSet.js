@@ -2,11 +2,11 @@
 
 const { describe, it } = require("node:test");
 const assert = require("node:assert/strict");
-const { BitSet } = require("../main");
+const { SparseBitSet } = require("../main");
 
-describe("Bitset", () => {
+describe("SparseBitSet", () => {
   it("get/set/unset - simple", () => {
-    const bitset = new BitSet(64);
+    const bitset = new SparseBitSet(64);
     assert.ok(!bitset.get(3));
     assert.ok(!bitset.get(7));
     assert.ok(!bitset.get(8));
@@ -27,12 +27,24 @@ describe("Bitset", () => {
     assert.ok(!bitset.get(3));
   });
 
-  it("allocation fail, limit exceeded",
-    {
-      expectFailure:
-        { message: 'ArrayBuffer.prototype.resize: Invalid length parameter' }
-    }, () => {
-      const bitset = new BitSet(8); // limit is 64
-      bitset.set(0xFF);
-    });
+  it("big number", () => {
+    const bits = new SparseBitSet();
+    assert.ok(!bits.get(0xFFFF));
+    assert.ok(!bits.get(23));
+    assert.ok(!bits.get(6));
+    bits.set(0xFFFF);
+    bits.set(23);
+    bits.set(2);
+    assert.ok(bits.get(0xFFFF));
+    assert.ok(bits.get(23));
+    assert.ok(bits.get(2));
+    assert.ok(!bits.get(6));
+    bits.unset(0xFFFF);
+    bits.unset(23);
+    assert.ok(!bits.get(0xFFFF));
+    assert.ok(!bits.get(23));
+    assert.ok(bits.get(2));
+    assert.ok(!bits.get(6));
+  });
+
 });

@@ -4,3 +4,9 @@ export class BitSet {
   set(value: number): void;
   unset(value: number): Boolean;
 }
+
+export class SparseBitSet {
+  get(value: number): Boolean;
+  set(value: number): void;
+  unset(value: number): Boolean;
+}
